@@ -1,12 +1,46 @@
 {
-  "name": "Image-Processing-API",
+  "name": "image-processing-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "An API that can be used in two different ways. As a simple placeholder API, the first allows you to place images into your frontend with the size set via URL parameters for rapid prototyping. The second use case is as a library to serve properly scaled versions of your images to the front end to reduce page load size. Rather than needing to resize and upload multiple copies of the same image to be used throughout your site, the API you create will handle resizing and serving stored images for you.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "nodemon src/index.ts",
+    "jasmine": "jasmine",
+    "test": "npx tsc && jasmine",
+    "lint": "eslint .",
+    "format": "prettier --write src/**/*.ts"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "feryalHisham",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feryalHisham/Image-Processing-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feryalHisham/Image-Processing-API/issues"
+  },
+  "homepage": "https://github.com/feryalHisham/Image-Processing-API#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jasmine": "^4.0.2",
+    "jasmine-spec-reporter": "^7.0.0",
+    "supertest": "^6.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jasmine": "^4.0.0",
+    "@types/node": "^16.11.12",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
 }

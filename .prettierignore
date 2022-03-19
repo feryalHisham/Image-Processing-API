@@ -1,0 +1,4 @@
+# Prettier will ignore the following
+
+node_modules
+dist
