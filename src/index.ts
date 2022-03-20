@@ -13,3 +13,6 @@ app.use('/images', routes);
 
 // To display the input images in the browser
 app.use('/images', express.static(getInputImagesPath()));
+
+// export app so that we can import it in spec file and test it
+export default app;
