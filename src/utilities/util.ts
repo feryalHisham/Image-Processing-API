@@ -8,14 +8,16 @@ const getInputImagesPath = (): string => {
 };
 
 const getProccessedImagesPath = async (): Promise<string> => {
-  await fs.ensureDir(PROCESSED_IMAGES_PATH);
-  return path.join(__dirname, PROCESSED_IMAGES_PATH);
+  try {
+    await fs.ensureDir(PROCESSED_IMAGES_PATH);
+    return path.join(__dirname, PROCESSED_IMAGES_PATH);
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
 };
 
 const getPathForImage = (imageName: string): string => {
-  const image = imageName.split('.')[0];
-  const extension = imageName.split('.')[1];
-  return path.join(getInputImagesPath(), `${image}.${extension}`);
+  return path.join(getInputImagesPath(), `${imageName}`);
 };
 
 const getProcessedImagePathWithSize = async (
@@ -23,10 +25,14 @@ const getProcessedImagePathWithSize = async (
   width: number,
   height: number
 ): Promise<string> => {
-  const image = imageName.split('.')[0];
-  const extension = imageName.split('.')[1];
-  const outPath = await getProccessedImagesPath();
-  return path.join(outPath, `${image}-${width}x${height}.${extension}`);
+  try {
+    const image = imageName.split('.')[0];
+    const extension = imageName.split('.')[1];
+    const outPath = await getProccessedImagesPath();
+    return path.join(outPath, `${image}-${width}x${height}.${extension}`);
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
 };
 
 /**
@@ -41,13 +47,16 @@ const imageWithRequiredSizeExists = async (
     const path = await getProcessedImagePathWithSize(imageName, width, height);
     return fs.pathExists(path);
   } catch (error) {
-    console.log('Error checking image exists ', error);
-    return false;
+    throw new Error((error as Error).message);
   }
 };
 
 const imageExists = async (imageName: string): Promise<boolean> => {
-  return fs.pathExists(getPathForImage(imageName));
+  try {
+    return fs.pathExists(getPathForImage(imageName));
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export {
