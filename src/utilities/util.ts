@@ -29,9 +29,27 @@ const getProcessedImagePathWithSize = async (
   return path.join(outPath, `${image}-${width}x${height}.${extension}`);
 };
 
+/**
+ * Returns a promise that resloves to true if image with required width and height already exists, false otherwise
+ */
+const imageWithRequiredSizeExists = async (
+  imageName: string,
+  width: number,
+  height: number
+): Promise<boolean> => {
+  try {
+    const path = await getProcessedImagePathWithSize(imageName, width, height);
+    return fs.pathExists(path);
+  } catch (error) {
+    console.log('Error checking image exists ', error);
+    return false;
+  }
+};
+
 export {
   getInputImagesPath,
   getProccessedImagesPath,
   getPathForImage,
   getProcessedImagePathWithSize,
+  imageWithRequiredSizeExists,
 };
