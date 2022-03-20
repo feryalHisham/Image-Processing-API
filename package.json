@@ -26,6 +26,7 @@
   "homepage": "https://github.com/feryalHisham/Image-Processing-API#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "express-validator": "^6.14.0",
     "fs-extra": "^10.0.1",
     "jasmine": "^4.0.2",
     "jasmine-spec-reporter": "^7.0.0",

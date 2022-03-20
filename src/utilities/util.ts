@@ -46,10 +46,15 @@ const imageWithRequiredSizeExists = async (
   }
 };
 
+const imageExists = async (imageName: string): Promise<boolean> => {
+  return fs.pathExists(getPathForImage(imageName));
+};
+
 export {
   getInputImagesPath,
   getProccessedImagesPath,
   getPathForImage,
   getProcessedImagePathWithSize,
   imageWithRequiredSizeExists,
+  imageExists,
 };
