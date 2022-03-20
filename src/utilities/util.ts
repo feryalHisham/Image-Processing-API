@@ -9,7 +9,7 @@ const getInputImagesPath = (): string => {
 
 const getProccessedImagesPath = async (): Promise<string> => {
   try {
-    await fs.ensureDir(PROCESSED_IMAGES_PATH);
+    await fs.ensureDir(path.join(__dirname, PROCESSED_IMAGES_PATH));
     return path.join(__dirname, PROCESSED_IMAGES_PATH);
   } catch (error) {
     throw new Error((error as Error).message);
