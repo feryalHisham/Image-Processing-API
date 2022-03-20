@@ -4,7 +4,7 @@ import { getProcessedImagePathWithSize, imageWithRequiredSizeExists } from '../.
 import {
   dimensionsValidationMiddleware,
   inputImageValidationMiddleware,
-} from '../../validators/image-exist.validator.middleware';
+} from '../../validators/image-input.validator.middleware';
 
 // Create instance of Router for resizeImage route
 const resizeImageRoute = express.Router();
