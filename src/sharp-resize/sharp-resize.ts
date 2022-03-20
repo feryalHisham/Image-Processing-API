@@ -4,9 +4,8 @@ import { getPathForImage, getProcessedImagePathWithSize } from '../utilities/uti
 
 const sharpResize = async (imageName: string, width: number, height: number) => {
   try {
-    await sharp(getPathForImage(imageName))
-      .resize(width, height)
-      .toFile(getProcessedImagePathWithSize(imageName, width, height));
+    const processedImagePath = await getProcessedImagePathWithSize(imageName, width, height);
+    await sharp(getPathForImage(imageName)).resize(width, height).toFile(processedImagePath);
   } catch (error) {
     console.log('Error resizing the image: ', error);
   }

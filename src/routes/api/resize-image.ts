@@ -11,7 +11,12 @@ resizeImageRoute.get('/', async (req, res) => {
   const requiredHeight: number = parseInt(req.query.height as string);
   try {
     await sharpResize(imageName, requiredWidth, requiredHeight);
-    res.sendFile(getProcessedImagePathWithSize(imageName, requiredWidth, requiredHeight));
+    const processedImagePath = await getProcessedImagePathWithSize(
+      imageName,
+      requiredWidth,
+      requiredHeight
+    );
+    res.sendFile(processedImagePath);
   } catch (error) {
     console.log('Error in response: ', error);
   }
