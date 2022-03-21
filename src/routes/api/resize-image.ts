@@ -13,7 +13,7 @@ const middlewares = [inputImageValidationMiddleware, dimensionsValidationMiddlew
 resizeImageRoute.get(
   '/',
   middlewares,
-  async (req: express.Request, res: express.Response, next: NextFunction) => {
+  async (req: express.Request, res: express.Response, next: NextFunction): Promise<void> => {
     const imageName: string = req.query.image as string;
     const requiredWidth: number = parseInt(req.query.width as string);
     const requiredHeight: number = parseInt(req.query.height as string);

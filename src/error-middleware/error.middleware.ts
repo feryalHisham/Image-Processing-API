@@ -12,7 +12,7 @@ const errorHandlerMiddleware = async (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
-) => {
+): Promise<void> => {
   console.log('Server error: ', error);
   res.status(500).send({ error: `Internal Server Error: ${error.message}` });
   next();

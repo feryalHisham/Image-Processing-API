@@ -5,7 +5,7 @@ const inputImageValidationMiddleware = async (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
-) => {
+): Promise<express.Response | undefined> => {
   if (!req.query.image) {
     return res.status(400).send({ error: 'Image name with extension is missing' });
   }
@@ -23,7 +23,7 @@ const dimensionsValidationMiddleware = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
-) => {
+): express.Response | undefined => {
   if (!req.query.width) {
     return res.status(400).send({ error: 'Width is missing' });
   }
